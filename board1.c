@@ -103,6 +103,7 @@ int main()
 	int i,j=0,counter1=0;
 	Infotype X;
 	List BoardL;
+	Address ptrav;
 	
 	CreateList(&BoardL);
 	
@@ -256,5 +257,18 @@ int main()
 			ADV();
 		}		
 	}
+	
+	//CONTOH AKSES KE ELEMEN LIST
+	
+	ptrav = Last(BoardL);
+	
+	//Untuk elemen bertipe char* :
+	TulisKata(Info(ptrav).ptk.nama);
+	TulisKata(Info(ptrav).ptk.tipe);
+	TulisKata(Info(ptrav).ptk.currentplayer);
+	
+	//Untuk elemen bertipe integer
+	printf("%d\n",Info(ptrav).ptk.kotapariwisata.harga.beli);
+	printf("%d\n",Info(ptrav).ptk.kotapariwisata.harga.biayaupgrade[3]);
 	return 0;
 }
