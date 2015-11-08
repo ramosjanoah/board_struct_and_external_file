@@ -1,0 +1,1 @@
+ gcc -o board1 board1.c mesinkata.h mesinkata.c mesinkarakter.h mesinkarakter.c listsirkuler.h listsirkuler.c
