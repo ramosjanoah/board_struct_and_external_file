@@ -6,11 +6,11 @@
 
 char CC;
 
-void START();
+void START(char filename[]);
 
-void ADV();
+void ADV(char filename[]);
 
-void Read_Newline();
+void Read_Newline(char filename[]);
 
 boolean EOP();
 
