@@ -14,15 +14,15 @@ typedef struct {
 boolean EndKata;
 Kata	CKata;
 
-void Ignore_Blank();
+void Ignore_Blank(char filename[]);
 
-void Ignore_Separator();
+void Ignore_Separator(char filename[]);
 
-void STARTKATA();
+void STARTKATA(char filename[]);
 
-void ADVKATA();
+void ADVKATA(char filename[]);
 
-void SalinKata();
+void SalinKata(char filename[]);
 
 Kata CopyKata(Kata K1);
 
