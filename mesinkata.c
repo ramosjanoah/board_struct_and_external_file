@@ -1,40 +1,40 @@
 #include "mesinkata.h"
 
-void Ignore_Blank()
+void Ignore_Blank(char filename[])
 {
 	while ((CC==blank) && (!EOP()))
 	{
-		ADV();
+		ADV(filename);
 	}	
 }
 
-void Ignore_Separator()
+void Ignore_Separator(char filename[])
 {
 	while ((CC=='|') && (!EOP()))
 	{
-		ADV();
+		ADV(filename);
 	}	
 }
 
-void STARTKATA()
+void STARTKATA(char filename[])
 {
-	START();
-	Ignore_Separator();
+	START(filename);
+	Ignore_Separator(filename);
 	
-	if (EOP())
+	if (EOP(filename))
 	{
 		EndKata=true;
 	}
 	else
 	{
 		EndKata=false;
-		SalinKata();
+		SalinKata(filename);
 	}
 }
 
-void ADVKATA()
+void ADVKATA(char filename[])
 {
-	Ignore_Separator();
+	Ignore_Separator(filename);
 	
 	if (EOP())
 	{
@@ -42,11 +42,11 @@ void ADVKATA()
 	}
 	else
 	{
-		SalinKata();
+		SalinKata(filename);
 	}
 }
 
-void SalinKata()
+void SalinKata(char filename[])
 {
 	int i=0;
 	
@@ -56,7 +56,7 @@ void SalinKata()
 	for (;;)	
 	{
 		CKata.TabKata[i]=CC;
-		ADV();
+		ADV(filename);
 		
 		if ((EOP()) || (CC=='|'))
 		{
