@@ -3,6 +3,6 @@
 #include "boolean.h"
 
 static FILE *pita;
-char filename1[] = "Board1.txt";
+//char filename1[] = "Board1.txt";
 
 
