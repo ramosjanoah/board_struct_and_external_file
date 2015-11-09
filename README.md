@@ -20,3 +20,6 @@ Intinya :
    Kalo misal yang berdiri dua, misal A sama C,
    berarti masukannya AC, gak usah dipisah jadi 
    dua variabel. Ntar implementasi sendiri ya wkwk.
+   
+5. ADT Mesin kata udah gua perbaharui. Jadinya setiap fungsi dikasi parameter
+   filename. Tujuannya supaya ADT ini bisa nanganin banyak file.
