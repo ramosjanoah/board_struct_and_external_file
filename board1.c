@@ -3,8 +3,32 @@
 #include "mesinkata.h"
 #include "listsirkuler.h"
 
+List Read_Board_File (char filename[]);
+
 int main()
 {	
+	Address ptrav;
+	List BoardL;
+	
+	BoardL = Read_Board_File("Board1.txt");
+	//CONTOH AKSES KE ELEMEN LIST
+	
+	ptrav = Last(BoardL);
+	
+	//Untuk elemen bertipe char* :
+	TulisKata(Info(ptrav).ptk.nama);
+	TulisKata(Info(ptrav).ptk.tipe);
+	TulisKata(Info(ptrav).ptk.currentplayer);
+	
+	//Untuk elemen bertipe integer
+	printf("%d\n",Info(ptrav).ptk.id);
+	printf("%d\n",Info(ptrav).ptk.kotapariwisata.harga.beli);
+	printf("%d\n",Info(ptrav).ptk.kotapariwisata.harga.biayaupgrade[1]);
+	return 0;
+}
+
+List Read_Board_File (char filename[])
+{
 	Kata Kota;
 
 	Kota.Length = 4;
@@ -103,7 +127,6 @@ int main()
 	int i,j=0,counter1=0;
 	Infotype X;
 	List BoardL;
-	Address ptrav;
 	
 	CreateList(&BoardL);
 	
@@ -111,12 +134,12 @@ int main()
 	{
 		if (counter1==0)
 		{
-			START();
+			START(filename);
 		}
 		
 		for (i=1; i<=3; i++)
 		{
-			ADVKATA();
+			ADVKATA(filename);
 			if (i==1) 
 			{
 				X.ptk.nama = CopyKata(CKata);					
@@ -137,7 +160,7 @@ int main()
 		{
 			for (i=1; i<=travkota-3; i++)
 			{
-				ADVKATA();
+				ADVKATA(filename);
 				if (i==1) 
 				{
 					X.ptk.kotapariwisata.kepemilikan = CopyKata(CKata);
@@ -180,7 +203,7 @@ int main()
 		{
 			for (i=1; i<=travpariwisata-3; i++)
 			{
-				ADVKATA();
+				ADVKATA(filename);
 				if (i==1) 
 				{
 					X.ptk.kotapariwisata.kepemilikan = CopyKata(CKata);
@@ -244,6 +267,9 @@ int main()
 		{
 			counter1++;
 		}
+		
+		ADVKATA(filename);
+		X.ptk.id = ConvertToBilangan(CKata);
 			
 		j++;	
 		if (j>0)
@@ -253,22 +279,9 @@ int main()
 		
 		if(!EOP())
 		{
-			ADV();
-			ADV();
+			ADV(filename);
+			ADV(filename);
 		}		
 	}
-	
-	//CONTOH AKSES KE ELEMEN LIST
-	
-	ptrav = Last(BoardL);
-	
-	//Untuk elemen bertipe char* :
-	TulisKata(Info(ptrav).ptk.nama);
-	TulisKata(Info(ptrav).ptk.tipe);
-	TulisKata(Info(ptrav).ptk.currentplayer);
-	
-	//Untuk elemen bertipe integer
-	printf("%d\n",Info(ptrav).ptk.kotapariwisata.harga.beli);
-	printf("%d\n",Info(ptrav).ptk.kotapariwisata.harga.biayaupgrade[3]);
-	return 0;
+	return BoardL;
 }
