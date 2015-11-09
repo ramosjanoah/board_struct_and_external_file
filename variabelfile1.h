@@ -50,6 +50,7 @@ typedef struct
 
 typedef struct
 {
+	int id;
 	Kata nama;
 	Kata tipe;
 	Kata currentplayer;
